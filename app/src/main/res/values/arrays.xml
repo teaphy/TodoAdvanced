@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="advancedList">
+		<item>ARouter</item>
+	</string-array>
+
+	<string-array name="arouterList">
+		<item>应用内跳转</item>
+		<item>ForResult跳转</item>
+		<item>带参跳转</item>
+		<item>跳转到Module</item>
+		<item>URI跳转</item>
+	</string-array>
+</resources>
