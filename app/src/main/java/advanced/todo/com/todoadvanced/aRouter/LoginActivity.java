@@ -1,6 +1,8 @@
 package advanced.todo.com.todoadvanced.aRouter;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -8,25 +10,36 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 
 import advanced.todo.com.todoadvanced.R;
+import advanced.todo.com.todoadvanced.aRouter.provider.LoginService;
+import advanced.todo.com.todoadvanced.aRouter.viewProvider.LoginCallBack;
 import advanced.todo.com.todoadvanced.base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-@Route(path = "/todo/test5")
-public class ARouterTest5Activity extends BaseActivity {
+@Route(path = "/todo/login")
+public class LoginActivity extends BaseActivity {
 
 
 	@BindView(R.id.tv_test)
 	TextView mTvTest;
+	@BindView(R.id.btn_login)
+	Button mBtnLogin;
+
 
 	@Autowired
-	int id;
-	@Autowired
-	String name;
+	LoginService mLoginService;
+
+
+	public static void launch() {
+		ARouter.getInstance()
+				.build("/todo/login")
+				.navigation();
+	}
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.activity_arouter_test;
+		return R.layout.activity_login;
 	}
 
 	@Override
@@ -36,7 +49,7 @@ public class ARouterTest5Activity extends BaseActivity {
 
 	@Override
 	public void initView() {
-		mTvTest.setText("通过URL跳转,参数：id = " + id + " & name = " + name);
+
 	}
 
 	@Override
@@ -46,7 +59,7 @@ public class ARouterTest5Activity extends BaseActivity {
 
 	@Override
 	public String initTitle() {
-		return "URL跳转，携带参数";
+		return "登录界面";
 	}
 
 	@Override
@@ -54,4 +67,20 @@ public class ARouterTest5Activity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		ButterKnife.bind(this);
 	}
+
+	@OnClick(R.id.btn_login)
+	public void onClick() {
+		new Handler().postDelayed(() -> mLoginService.doLogin(new LoginCallBack() {
+			@Override
+			public void loginSuccess(String msg) {
+				mTvTest.setText(msg);
+			}
+
+			@Override
+			public void loginFailure() {
+
+			}
+		}), 1000);
+	}
+
 }

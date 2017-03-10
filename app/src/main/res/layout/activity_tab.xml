@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:background="@color/colorWhite"
+	tools:context="advanced.todo.com.todoadvanced.MainActivity">
+
+	<include layout="@layout/layout_toolbar"/>
+
+	<fragment
+		android:name="advanced.todo.com.todoadvanced.aRouter.fragment.TestAFragment"
+		android:layout_width="match_parent"
+		android:layout_height="128dp"
+		android:id="@+id/frm_testA" />
+
+	<fragment
+		android:name="advanced.todo.com.todoadvanced.aRouter.fragment.TestBFragment"
+		android:layout_width="match_parent"
+		android:layout_height="128dp"
+		android:id="@+id/frm_testB" />
+
+</LinearLayout>

@@ -2,6 +2,7 @@
 <resources>
 	<string-array name="advancedList">
 		<item>ARouter</item>
+		<item>RxJava</item>
 	</string-array>
 
 	<string-array name="arouterList">
@@ -10,5 +11,7 @@
 		<item>带参跳转</item>
 		<item>跳转到Module</item>
 		<item>URI跳转</item>
+		<item>拦截器</item>
+		<item>Fragment依赖注入测试</item>
 	</string-array>
 </resources>

@@ -39,13 +39,13 @@ public class TestWebview extends AppCompatActivity {
 				if( url.startsWith("http:") || url.startsWith("https:") ) {
 					return false;
 				}
-				//如果不需要其他对点击链接事件的处理返回true，否则返回false
-				ARouter.getInstance()
-						.build(Uri.parse(url))
-						.navigation();
-//				Intent intent = new Intent(TestWebview.this, SchemeFilterActivity.class);
-//				intent.setData(Uri.parse(url));
-//				startActivity(intent);
+//				//如果不需要其他对点击链接事件的处理返回true，否则返回false
+//				ARouter.getInstance()
+//						.build(Uri.parse(url))
+//						.navigation();
+				Intent intent = new Intent(TestWebview.this, SchemeFilterActivity.class);
+				intent.setData(Uri.parse(url));
+				startActivity(intent);
 				return true;
 			}
 		});
@@ -54,3 +54,5 @@ public class TestWebview extends AppCompatActivity {
 
 	}
 }
+
+

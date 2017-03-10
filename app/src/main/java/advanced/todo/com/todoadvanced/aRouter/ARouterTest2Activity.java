@@ -12,7 +12,7 @@ import advanced.todo.com.todoadvanced.base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-@Route(path = "/todo/test2")
+@Route(path = "/todo/test2", extras = 1001)
 public class ARouterTest2Activity extends BaseActivity {
 
 

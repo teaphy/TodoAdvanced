@@ -1,17 +1,16 @@
 package advanced.todo.com.todoadvanced.aRouter;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import advanced.todo.com.todoadvanced.R;
 import advanced.todo.com.todoadvanced.adapter.SingleTextAdapter;
@@ -21,7 +20,7 @@ import advanced.todo.com.todoadvanced.bean.PersonBean;
 @Route(path = "/todo/arouter")
 public class ARouterActivity extends BaseRecyclerViewActivity<String, SingleTextAdapter> {
 
-	public static final int CODE_RUEST = 0x01;
+	public static final int CODE_REQUEST = 0x01;
 
 	SingleTextAdapter mAdapter;
 
@@ -29,7 +28,7 @@ public class ARouterActivity extends BaseRecyclerViewActivity<String, SingleText
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if (requestCode == CODE_RUEST) {
+		if (requestCode == CODE_REQUEST) {
 			if (null != data) {
 				Toast.makeText(this, data.getExtras().getString("result"), Toast.LENGTH_SHORT).show();
 			} else {
@@ -93,9 +92,20 @@ public class ARouterActivity extends BaseRecyclerViewActivity<String, SingleText
 				jumpByUri();
 				Toast.makeText(this, "URI跳转", Toast.LENGTH_SHORT).show();
 				break;
+			case 5: // 拦截器
+				Toast.makeText(this, "拦截器", Toast.LENGTH_SHORT).show();
+				jumpNormal();
+				break;
+			case 6: // Fragment依赖注入测试
+				jumpTab();
+				break;
 			default:
 				break;
 		}
+	}
+
+	private void jumpTab() {
+		TabActivity.launch();
 	}
 
 	private void jumpNormal() {
@@ -105,9 +115,21 @@ public class ARouterActivity extends BaseRecyclerViewActivity<String, SingleText
 	}
 
 	private void jumpForResult() {
+		// 使用两个参数的navigation方法，可以获取单次跳转的结果
+		// NavigationCallback 如果设置了，本次跳转的结果就会被这个回调处理，是优先于全局降级的
 		ARouter.getInstance()
 				.build("/todo/test2")
-				.navigation(this, CODE_RUEST);
+				.navigation(this, CODE_REQUEST, new NavigationCallback() {
+					@Override
+					public void onFound(Postcard postcard) {
+						Log.i("123", "onFound");
+					}
+
+					@Override
+					public void onLost(Postcard postcard) {
+						Log.i("123", "onLost");
+					}
+				});
 	}
 
 	private void jumpWithParameters() {

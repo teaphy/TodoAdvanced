@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 import advanced.todo.com.todoadvanced.adapter.SingleTextAdapter;
 import advanced.todo.com.todoadvanced.base.BaseRecyclerViewActivity;
+import advanced.todo.com.todoadvanced.rxJava.TestRxJavaActivity;
 
 public class MainActivity extends BaseRecyclerViewActivity<String, SingleTextAdapter> {
 
@@ -53,6 +54,9 @@ public class MainActivity extends BaseRecyclerViewActivity<String, SingleTextAda
 						.build("/todo/arouter")
 						.navigation();
 				Toast.makeText(this, "ARouter", Toast.LENGTH_SHORT).show();
+				break;
+			case 1: // RxJava
+				TestRxJavaActivity.launch();
 				break;
 			default:
 				break;

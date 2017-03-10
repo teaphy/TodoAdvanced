@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="advanced.todo.com.todoadvanced">
 
-	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" ></uses-permission>
-	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" ></uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" ></uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" ></uses-permission>
-	<uses-permission android:name="android.permission.INTERNET" ></uses-permission>
-	<uses-permission android:name="android.permission.WAKE_LOCK" ></uses-permission>
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
 
 	<application
 		android:name=".application.MyApplication"
@@ -29,22 +29,29 @@
 		<activity android:name=".aRouter.ARouterTest2Activity" />
 		<activity android:name=".aRouter.ARouterTest3Activity" />
 		<activity android:name=".aRouter.ARouterTest4Activity" />
+		<activity android:name=".aRouter.ARouterTest5Activity" />
+		<activity android:name=".aRouter.LoginActivity" />
 		<activity android:name=".aRouter.TestWebview" />
-		<activity android:name=".aRouter.SchemeFilterActivity" >
+		<activity android:name=".aRouter.SchemeFilterActivity">
 			<intent-filter>
-				<!--协议部分，随便设置-->
-				<!--Scheme 协议名称-->
-				<!--host 设置哪个作用域 -->
-				<data
-					android:scheme="todo"
-					android:host="m.advanced.com" />
 
-				<!--下面这几行也必须得设置-->
-				<category android:name="android.intent.category.DEFAULT"/>
-				<action android:name="android.intent.action.VIEW"/>
-				<category android:name="android.intent.category.BROWSABLE"/>
+				<!-- 协议部分，随便设置 -->
+				<!-- Scheme 协议名称 -->
+				<!-- host 设置哪个作用域 -->
+				<data
+					android:host="m.advanced.com"
+					android:scheme="todo" />
+
+				<!-- 下面这几行也必须得设置 -->
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.BROWSABLE" />
 			</intent-filter>
 		</activity>
+		<activity android:name=".aRouter.TabActivity" />
+		<activity android:name=".rxJava.TestRxJavaActivity"></activity>
 	</application>
 
 </manifest>
