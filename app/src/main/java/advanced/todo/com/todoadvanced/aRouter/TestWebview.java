@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 
 import advanced.todo.com.todoadvanced.R;
 
@@ -34,10 +35,17 @@ public class TestWebview extends AppCompatActivity {
 		webview.setWebViewClient(new WebViewClient(){
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+				// 以"http","https"开头的url在本页用webview进行加载，其他链接进行跳转
 				if( url.startsWith("http:") || url.startsWith("https:") ) {
 					return false;
 				}
-
+				//如果不需要其他对点击链接事件的处理返回true，否则返回false
+				ARouter.getInstance()
+						.build(Uri.parse(url))
+						.navigation();
+//				Intent intent = new Intent(TestWebview.this, SchemeFilterActivity.class);
+//				intent.setData(Uri.parse(url));
+//				startActivity(intent);
 				return true;
 			}
 		});
