@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 import advanced.todo.com.todoadvanced.adapter.SingleTextAdapter;
 import advanced.todo.com.todoadvanced.base.BaseRecyclerViewActivity;
+import advanced.todo.com.todoadvanced.dagger.DaggerActivity;
 import advanced.todo.com.todoadvanced.rxJava.TestRxJavaActivity;
 
 public class MainActivity extends BaseRecyclerViewActivity<String, SingleTextAdapter> {
@@ -57,6 +58,9 @@ public class MainActivity extends BaseRecyclerViewActivity<String, SingleTextAda
 				break;
 			case 1: // RxJava
 				TestRxJavaActivity.launch();
+				break;
+			case 2: // Dagger
+				DaggerActivity.launch();
 				break;
 			default:
 				break;

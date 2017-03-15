@@ -3,6 +3,7 @@
 	<string-array name="advancedList">
 		<item>ARouter</item>
 		<item>RxJava</item>
+		<item>Dagger</item>
 	</string-array>
 
 	<string-array name="arouterList">

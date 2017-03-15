@@ -51,7 +51,8 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".aRouter.TabActivity" />
-		<activity android:name=".rxJava.TestRxJavaActivity"></activity>
+		<activity android:name=".rxJava.TestRxJavaActivity" />
+		<activity android:name=".dagger.DaggerActivity"></activity>
 	</application>
 
 </manifest>
